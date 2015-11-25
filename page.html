@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset=UTF-8/>
+    <link rel="stylesheet" type="text/css" href="css/page.css"/>
+    <title>图书管理系统</title>
+    <script type="text/javascript">
+    function putlog()
+    {
+        var a=document.getElementById("logaa").value;
+        console.log(a);
+    }
+    </script>
+</head>
+<body>
+    <div id="sitemap">
+        <div id="main" onclick="putlog();"><span id="logaa">Library</span></div>
+        <div id="booksearch" onclick=""><span>书籍查询</span></div>
+        <div id="readersearch" onclick=""><span>读者查询</span></div>
+        <div id="login" onclick=""><span>登陆</span></div>
+        <div id="logout" onclick=""><span>登出</span></div>
+    </div>
+    <div id="mainpage" display="block">
+        
+    </div>
+    <div id="booksearchpage" display="block">
+        
+    </div>
+    <div id="readersearchpage" display="block">
+        
+    </div>
+</body>
+</html>
