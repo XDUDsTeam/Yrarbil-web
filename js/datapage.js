@@ -21,16 +21,17 @@
         xhr=new XMLHttpRequest();
     else
         xhr=new ActiveXObject("Microsoft.XMLHTTP");//兼容ie7以下
-    xhr.onreadystatechange=function()//设置监听
+    xhr.onreadystatechange=function(xhr,name)//设置监听
     {
         if(xhr.readyState==4&&xhr.status==200)
         {
             var lidata=xhr.responseText;
             var lidata_obj=eval("("+logindata+")");
             sessionStorage.userkind="reader";
+            sessionStorage.readername=name;
             sessionStorage.tidk=lidata_obj.tidk;
             sessionStorage.time=lidata_obj.time;
-            sessionStorage.page=1;
+            //sessionStorage.page=1;
             document.location="page.html";
         }
     }
@@ -38,4 +39,7 @@
     xhr.send();
 }
 
-
+function readerlogout()
+{
+    
+}

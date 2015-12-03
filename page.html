@@ -4,30 +4,71 @@
     <meta charset=UTF-8/>
     <link rel="stylesheet" type="text/css" href="css/page.css"/>
     <title>图书管理系统</title>
-    <script type="text/javascript">
-    function putlog()
-    {
-        var a=document.getElementById("logaa").value;
-        console.log(a);
-    }
-    </script>
+    <script type="text/javascript" src="js/sitemap.js"></script>
 </head>
-<body>
+<body onload="init();">
     <div id="sitemap">
-        <div id="main" onclick="putlog();"><span id="logaa">Library</span></div>
-        <div id="booksearch" onclick=""><span>书籍查询</span></div>
-        <div id="readersearch" onclick=""><span>读者查询</span></div>
-        <div id="login" onclick=""><span>登陆</span></div>
-        <div id="logout" onclick=""><span>登出</span></div>
+        <div id="main" onclick="clickbtn(1);" onmouseover="onmouseoverbtn(1);" onmouseout="onmouseoutbtn(1);"><span id="logaa">Library</span></div>
+        <div id="booksearch" onclick="clickbtn(2);" onmouseover="onmouseoverbtn(2);" onmouseout="onmouseoutbtn(2);"><span>书籍查询</span></div>
+        <div id="readersearch" onclick="clickbtn(3);" onmouseover="onmouseoverbtn(3);" onmouseout="onmouseoutbtn(3);"><span>读者查询</span></div>
+        <div id="login" onclick="clickbtn(4);" onmouseover="onmouseoverbtn(4);" onmouseout="onmouseoutbtn(4);"><span>登陆</span></div>
+        <div id="logout" onclick="clickbtn(5);" onmouseover="onmouseoverbtn(5);" onmouseout="onmouseoutbtn(5);"><span>登出</span></div>
     </div>
-    <div id="mainpage" display="block">
+    <div id="mainpage" style="display:block">
+        <h2>mianmianmianmianmian</h2>
+        <br/>
+        <h2>mianmianmianmianmian</h2>
+        <br/>
+        <h2>mianmianmianmianmian</h2>
+        <br/>
+        <h2>mianmianmianmianmian</h2>
+        <br/>
+        <h2>mianmianmianmianmian</h2>
+        <br/>
+        <h2>mianmianmianmianmian</h2>
+        <br/>
+        <h2>mianmianmianmianmian</h2>
+        <br/>
+    </div>
+    <div id="booksearchpage" style="display:none">
+        <h2>booksearchpagebooksearchpagebooksearchpagebooksearchpage</h2>
+        <br/>
+        <h2>booksearchpagebooksearchpagebooksearchpagebooksearchpage</h2>
+        <br/>
+        <h2>booksearchpagebooksearchpagebooksearchpagebooksearchpage</h2>
+        <br/>
+        <h2>booksearchpagebooksearchpagebooksearchpagebooksearchpage</h2>
+        <br/>
+        <h2>booksearchpagebooksearchpagebooksearchpagebooksearchpage</h2>
+        <br/>
+        <h2>booksearchpagebooksearchpagebooksearchpagebooksearchpage</h2>
+        <br/>
+        <h2>booksearchpagebooksearchpagebooksearchpagebooksearchpage</h2>
+        <br/>
+        <h2>booksearchpagebooksearchpagebooksearchpagebooksearchpage</h2>
+        <br/>
+        <h2>booksearchpagebooksearchpagebooksearchpagebooksearchpage</h2>
+        <br/>
         
     </div>
-    <div id="booksearchpage" display="block">
-        
+    <div id="readersearchpage" style="display:none">
+        <h2>rsearchpagereadersearchpagereadersearchpagereadersearchpage</h2>
+        <br/>
+        <h2>chpagereadersearchpagereadersearchpagereadersearchpage</h2>
+        <br/>
+        <h2>agerearchpagereadersearchpagereadersearchpagereadersearchpage</h2>
+        <br/>
+        <h2>adersearchpagereadersearchpagereadersearchpagereadersearchpage</h2>
+        <br/>
+        <h2>readersearchpagereadersearchpagereadersearchpagereadersearchpage</h2>
+        <br/>
+        <h2>gereadersearchpagereadersearchpagereadersearchpagereadersearchpage</h2>
+        <br/>
+        <h2>gereadersearchpagereadersearchpagereadersearchpagereadersearchpage</h2>
+        <br/>
+        <h2>gereadersearchpagereadersearchpagereadersearchpagereadersearchpage</h2>
+        <br/>
     </div>
-    <div id="readersearchpage" display="block">
-        
-    </div>
+  <!--  <div id="wait" display="none"><img src="picture/wait.gif"></img></div> -->
 </body>
 </html>
