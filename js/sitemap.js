@@ -1,7 +1,8 @@
 function init()
 {
-    sessionStorage.userkind="visiter";
-    sessionStorage.readername="";
+    //sessionStorage.userkind="visiter";
+    //sessionStorage.readername="";
+    //≤‚ ‘
     var userkind=sessionStorage.userkind;
     if(userkind=="reader")
     {
