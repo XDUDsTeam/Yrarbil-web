@@ -16,6 +16,7 @@ function init()
     document.getElementById("main").style.backgroundColor="rgba(255,255,255,1)";
     document.getElementById("main").style.color="black";
 }
+
 function onmouseoverbtn(id)
 {
     var name =[];
@@ -63,6 +64,7 @@ function onmouseoverbtn(id)
         return;
     name[0].style.backgroundColor="rgba(100,100,255,0.8)";
 }
+
 function onmouseoutbtn(id)
 {
     var name =[];
@@ -191,7 +193,7 @@ function clickbtn(id)
             break;
         case 5:
         {
-            readerlogout();
+            LogOut();
             return;
         }
             break;
@@ -199,3 +201,4 @@ function clickbtn(id)
             break;
     }
 }
+
