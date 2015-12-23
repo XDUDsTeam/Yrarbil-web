@@ -1,8 +1,5 @@
-function init()
+﻿function init()
 {
-    //sessionStorage.userkind="visiter";
-    //sessionStorage.readername="";
-    //����
     var userkind=sessionStorage.userkind;
     if(userkind=="reader")
     {
@@ -46,14 +43,14 @@ function onmouseoverbtn(id)
                 return;
             else
             {
-                document.getElementById("login").style.backgroundColor="rgba(100,100,255,0.8)";
+                document.getElementById("login").style.backgroundColor="rgba(255,255,255,0.6)";
                 return;
             }
         }
             break;
         case 5:
         {
-            document.getElementById("login").style.backgroundColor="rgba(100,100,255,0.8)";
+            document.getElementById("logout").style.backgroundColor="rgba(255,255,255,0.6)";
             return;
         }
             break;
@@ -62,7 +59,7 @@ function onmouseoverbtn(id)
     }
     if(name[1].style.display=="block")
         return;
-    name[0].style.backgroundColor="rgba(100,100,255,0.8)";
+    name[0].style.backgroundColor="rgba(255,255,255,0.6)";
 }
 
 function onmouseoutbtn(id)
@@ -94,14 +91,14 @@ function onmouseoutbtn(id)
                 return;
             else
             {
-                document.getElementById("login").style.backgroundColor="rgba(0,0,255,0)";
+                document.getElementById("login").style.backgroundColor="rgba(255,255,255,0)";
                 return;
             }
         }
             break;
         case 5:
         {
-            document.getElementById("login").style.backgroundColor="rgba(0,0,255,0)";
+            document.getElementById("logout").style.backgroundColor="rgba(255,255,255,0)";
             return;
         }
             break;
@@ -110,7 +107,7 @@ function onmouseoutbtn(id)
     }
     if(name[1].style.display=="block")
         return;
-    name[0].style.backgroundColor="rgba(0,0,255,0)";
+    name[0].style.backgroundColor="rgba(255,255,255,0)";
 }
 
 function clickbtn(id)
@@ -134,9 +131,9 @@ function clickbtn(id)
             {
                 name[0].style.backgroundColor="rgba(255,255,255,1)";
                 name[0].style.color="black";
-                name[2].style.backgroundColor="rgba(0,0,255,1)";
+                name[2].style.backgroundColor="rgba(255,255,255,0)";
                 name[2].style.color="white";
-                name[4].style.backgroundColor="rgba(0,0,255,1)";
+                name[4].style.backgroundColor="rgba(255,255,255,0)";
                 name[4].style.color="white";
                 name[1].style.display="block";
                 name[3].style.display="none";
@@ -152,9 +149,9 @@ function clickbtn(id)
             {
                 name[2].style.backgroundColor="rgba(255,255,255,1)";
                 name[2].style.color="black";
-                name[0].style.backgroundColor="rgba(0,0,255,1)";
+                name[0].style.backgroundColor="rgba(255,255,255,0)";
                 name[0].style.color="white";
-                name[4].style.backgroundColor="rgba(0,0,255,1)";
+                name[4].style.backgroundColor="rgba(255,255,255,0)";
                 name[4].style.color="white";
                 name[3].style.display="block";
                 name[1].style.display="none";
@@ -164,15 +161,20 @@ function clickbtn(id)
             break;
         case 3:
         {
+            if(sessionStorage.userkind=="visiter")
+            {
+                alert("游客不可用，请先登录！");
+                return;
+            }
             if(name[5].style.display=="block")
                 return;
             else
             {
                 name[4].style.backgroundColor="rgba(255,255,255,1)";
                 name[4].style.color="black";
-                name[0].style.backgroundColor="rgba(0,0,255,1)";
+                name[0].style.backgroundColor="rgba(255,255,255,0)";
                 name[0].style.color="white";
-                name[2].style.backgroundColor="rgba(0,0,255,1)";
+                name[2].style.backgroundColor="rgba(255,255,255,0)";
                 name[2].style.color="white";
                 name[5].style.display="block";
                 name[1].style.display="none";

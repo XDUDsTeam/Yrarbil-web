@@ -5,6 +5,13 @@
     margin:0px;
     overflow:auto;
 }
+article
+{
+    margin-top:15%;
+    margin-left:5%;
+    font-size:2em;
+    font-family:"微软雅黑";
+}
 #sitemap
 {
     position:fixed;
@@ -12,7 +19,9 @@
     top:0;
     width:100%;
     height:8%;
-    background-color:blue;
+    background:url(../texture/sitemap.jpg);
+    background-size:100%;
+    background-repeat:no-repeat;
 }
 #main
 {
@@ -21,7 +30,7 @@
     top:0;
     width:10%;
     height:8%;
-    font-size:1.5rem;
+    font-size:2rem;
     color:white;
 }
 #booksearch
@@ -31,7 +40,7 @@
     top:0;
     width:10%;
     height:8%;
-    font-size:1.5rem;
+    font-size:2rem;
     color:white;
 }
 #readersearch
@@ -41,7 +50,7 @@
     top:0;
     width:10%;
     height:8%;
-    font-size:1.5rem;
+    font-size:2rem;
     color:white;
 }
 #login
@@ -51,7 +60,7 @@
     top:0;
     width:10%;
     height:8%;
-    font-size:1.5rem;
+    font-size:2rem;
     color:white;
 }
 #logout
@@ -61,6 +70,21 @@
     top:0;
     width:10%;
     height:8%;
-    font-size:1.5rem;
+    font-size:2rem;
     color:white;
+}
+#Bookis
+{
+    margin-top:10%;
+    margin-left:5%;
+    font-size:1.2em;
+}
+#BookInfo
+{
+    margin-left:50%;
+    font-size:1.5em;
+}
+.maincon
+{
+    margin-top:8%;
 }

@@ -1,10 +1,11 @@
 ﻿<!DOCTYPE html>
 <html lang="zh">
 <head>
-    <meta charset=UTF-8/>
-    <link rel="stylesheet" type="text/css" href="css/page.css"/>
+    <meta http-equiv="Content-Type" content="text/html" />
+    <link rel="stylesheet" type="text/css" href="css/mainpage.css"/>
     <title>图书管理系统</title>
-    <script type="text/javascript" src="js/sitemap.js"></script>
+    <script type="text/javascript" src="js/Pagelogic.js"></script>
+    <script type="text/javascript" src="js/Data.js" ></script>
 </head>
 <body onload="init();">
     <div id="sitemap">
@@ -14,16 +15,51 @@
         <div id="login" onclick="clickbtn(4);" onmouseover="onmouseoverbtn(4);" onmouseout="onmouseoutbtn(4);"><span>登陆</span></div>
         <div id="logout" onclick="clickbtn(5);" onmouseover="onmouseoverbtn(5);" onmouseout="onmouseoutbtn(5);"><span>登出</span></div>
     </div>
-    <div id="mainpage" style="display:block">
-    <article>该项目是一个简单地图书馆图书管理系统。可用于小型图书馆的图书管理工 作。<br/>该项目是起于西安电子科技大学软件学院 2015 年数据结构课程大作业。<br/>目 前遵循 BSD3 开原协议。<br/>这个项目后端使用以 Haskell 编写的框架 wrap 与 wai。同时使用著名的开源数据库 PostgreSQL ，作为存储数据的方式。<br/>整个项目使用 Travis-ci 持续集成服务，与 Docker 容器服务。同时计划在 DaoCloud。</article>
+    <div id="mainpage" class="maincon" style="display:block">
+    <article>该项目是一个简单地图书馆图书管理系统。可用于小型图书馆的图书管理工作。<br/>该项目是起于西安电子科技大学软件学院 2015 年数据结构课程大作业。<br/>目前遵循 BSD3 开源协议。<br/>这个项目后端使用以 Haskell 编写的框架 wrap 与 wai。同时使用著名的开源数据库 PostgreSQL ，作为存储数据的方式。<br/>整个项目使用 Travis-ci 持续集成服务，与 Docker 容器服务。同时计划在 DaoCloud。</article>
     <img></img>
     </div>
-    <div id="booksearchpage" style="display:none">
-        <input>
+    <div id="booksearchpage" class="maincon" style="display:none">
+        <div id="Bookis">
+        <p>按图书ISBN码查询</p>
+        <input type="number" id="BookInfoSearch" placeholder="请输入图书ISBN码！" />
+        <button type="submit" class="submit_button" onclick="BookInfoSearch();">查询</button>
+        </div>
+        <div id="BookInfo">
+            <table border="1">
+                 <tr>
+                    <th>name</th>
+                    <th>书名</th>
+                </tr>
+                <tr>
+                    <th>author</th>
+                    <th>author</th>
+                </tr>
+                <tr>
+                    <th>publishLocation</th>
+                    <th>publishLocation</th>
+                </tr>
+                <tr>
+                    <th>pressHouse</th>
+                    <th>pressHouse</th>
+                </tr>
+                <tr>
+                    <th>publishDate</th>
+                    <th>publishDate</th>
+                </tr>
+                <tr>
+                    <th>ISBN</th>
+                    <th>ISBN</th>
+                </tr>
+                <tr>
+                    <th>location</th>
+                    <th>location</th>
+                </tr>
+            </table>
+        </div>
     </div>
-    <div id="readersearchpage" style="display:none">
+    <div id="readersearchpage" class="maincon" style="display:none">
         
     </div>
-  <!--  <div id="wait" display="none"><img src="picture/wait.gif"></img></div> -->
 </body>
 </html>

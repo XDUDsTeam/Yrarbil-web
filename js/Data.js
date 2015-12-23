@@ -31,15 +31,24 @@
     {
         var logindata=xhr.responseText;
         var logindata_obj=eval("("+logindata+")");
-        sessionStorage.readername=name;
-        sessionStorage.tidk=logindata_obj.tidk;
-        sessionStorage.time=logindata_obj.time;
-        //sessionStorage.page=1;
-        document.location="page.html";
+        if(logindata_obj.status=="failed")
+        {
+            alert("错误"+logindata_obj.reason);
+            pwd.value="";
+        }
+        else
+        {
+            sessionStorage.readername=name;
+            sessionStorage.tidk=logindata_obj.tidk;
+            sessionStorage.time=logindata_obj.time;
+            //sessionStorage.page=1;
+            document.location="page.html";
+        }
     }
     else
     {
-        //异常处理
+        alert("服务器出错，请重试！");
+        pwd.value="";
     }
 }
 
@@ -60,7 +69,7 @@ function LogOut()
         
         var logoutdata=xhr.responseText;
         var logoutdata=eval("("+logoutdata+")");
-        if(logoutdata_obj.status=="failure")
+        if(logoutdata_obj.status=="failed")
         {
             alert("登出失败");
             return;
@@ -75,7 +84,7 @@ function LogOut()
     }
     else
     {
-        //异常处理
+        alert("服务器出错，请重试！");
     }
 }
 
@@ -106,7 +115,7 @@ function BookOrder(barcode)
     }
     else
     {
-        //异常处理
+        alert("服务器出错，请重试！");
     }
 }
 
@@ -126,18 +135,19 @@ function BookOrderOff(barcode)
     {
         var bookorderoffdata=xhr.responseText;
         var bookorderoffdata_obj=eval("("+bookorderdata+")");
-        if(bookorderoffdata_obj.status=="success")
+        if(bookorderoffdata_obj.status=="failed")
         {
-            alert("预约成功");
+            alert("取消预约失败"+bookorderoffdata_obj.reason);
+            //
         }
         else
         {
-            alert("预约失败"+bookorderoffdata_obj.reason);
+            alert("取消预约成功");
         }
     }
     else
     {
-        //异常处理
+        alert("服务器出错，请重试！");
     }
 }
 
@@ -167,28 +177,24 @@ function BookStatusSearchBid()
         {
             alert("图书在架");
         }
-        else
+        else if(BookStatus_obj.status=="off")
         {
             alert("图书不在架");
+        }
+        else
+        {
+            //
         }
     }
     else
     {
-        //异常处理
+        alert("服务器出错，请重试！");
     }
 }
 
-function BookStatusSearchISBN()
+function BookStatusSearchISBN(isbn)
 {
-    var bssi=document.getElementById("BookStatusSearchISBN");
-    if(bssi.value!="")
-    {
-        alert("请输入图书ISBN码！");
-    }
-    else
-    {
-        var url="http://qinka-yrarbilbackend.daoapp.io:80/423472651c/ons"+"?isbn="+bssi.value+"&p="+Math.random();
-    }
+    var url="http://qinka-yrarbilbackend.daoapp.io:80/423472651c/ons"+"?isbn="+isbn+"&p="+Math.random();
     var xhr;
     if(window.XMLHttpRequest)
         xhr=new XMLHttpRequest();
@@ -202,22 +208,36 @@ function BookStatusSearchISBN()
         var BookStatus_obj=eval("("+BookStatus+")");
         if(BookStatus_obj.status=="on")
         {
-            alert("图书在架");
+            return 1;
+        }
+        else if(BookStatus_obj.status=="off")
+        {
+            return 0;
         }
         else
         {
-            alert("图书不在架");
+            //
         }
     }
     else
     {
-        //异常处理
+        return -1;
     }
 }
 
-function BookInfoSearch(isbn)
+function BookInfoSearch()
 {
-    var url="http://qinka-yrarbilbackend.daoapp.io:80/423472651c/9c4f7bfef"+"?isbn="+isbn+"&type=json"+"&p="+Math.random();
+    var bssi=document.getElementById("BookInfoSearch");
+    var bookinfo=document.getElementById("BookInfo");
+    if(bssi.value=="")
+    {
+        alert("请输入图书ISBN码！");
+    }
+    else
+    {
+        var url="http://qinka-yrarbilbackend.daoapp.io:80/423472651c/ons"+"?isbn="+bssi.value+"&type=json"+"&p="+Math.random();
+        bookinfo.innerHTML=""
+    }
     var xhr;
     if(window.XMLHttpRequest)
         xhr=new XMLHttpRequest();
@@ -229,11 +249,65 @@ function BookInfoSearch(isbn)
     {
         var bookinfosearchdata=xhr.responseText;
         var bookinfosearchdata_obj=eval("("+bookinfosearchdata+")");
-        //表单处理
+        if(bookinfosearchdata_obj.status="failed")
+        {
+            alert("查询失败");
+        }
+        else
+        {
+            bookinfo.innerHTML="<table border=\"1\">";
             
+            bookinfo.innerHTML+="<tr><th>name</th><th>";
+            bookinfo.innerHTML+=bookinfosearchdata_obj.name;
+            bookinfo.innerHTML+="</th></tr>";
+            
+            bookinfo.innerHTML+="<tr><th>author</th><th>";
+            bookinfo.innerHTML+=bookinfosearchdata_obj.author;
+            bookinfo.innerHTML+="</th></tr>";
+            
+            bookinfo.innerHTML+="<tr><th>publishLocation</th><th>";
+            bookinfo.innerHTML+=bookinfosearchdata_obj.publishLocation;
+            bookinfo.innerHTML+="</th></tr>";
+            
+            bookinfo.innerHTML+="<tr><th>pressHouse</th><th>";
+            bookinfo.innerHTML+=bookinfosearchdata_obj.pressHouse;
+            bookinfo.innerHTML+="</th></tr>";
+            
+            bookinfo.innerHTML+="<tr><th>publishDate</th><th>";
+            bookinfo.innerHTML+=bookinfosearchdata_obj.publishDate;
+            bookinfo.innerHTML+="</th></tr>";
+            
+            bookinfo.innerHTML+="<tr><th>ISBN</th><th>";
+            bookinfo.innerHTML+=bookinfosearchdata_obj.ISBN;
+            bookinfo.innerHTML+="</th></tr>";
+        
+            bookinfo.innerHTML+="<tr><th>location</th><th>";
+            bookinfo.innerHTML+=bookinfosearchdata_obj.location;
+            bookinfo.innerHTML+="</th></tr>";
+            
+            bookinfo.innerHTML+="</table>";
+            if(BookStatusSearchISBN(bookinfosearchdata_obj.ISBN)==1)
+            {
+                bookinfo.innerHTML+="<tr><th>status</th><th>";
+                bookinfo.innerHTML+="在架";
+                bookinfo.innerHTML+="</th></tr>";
+            }
+            else if(BookStatusSearchISBN(bookinfosearchdata_obj.ISBN)==0)
+            {
+                bookinfo.innerHTML+="<tr><th>status</th><th>";
+                bookinfo.innerHTML+="不在架";
+                bookinfo.innerHTML+="</th></tr>";
+            }
+            else
+            {
+                alert("error");
+            }
+            bookinfo.innerHTML+="</table>";
+        }
     }
     else
     {
-        
+        alert("服务器出错，请重试！");
     }
 }
+
